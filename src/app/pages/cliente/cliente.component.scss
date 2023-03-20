@@ -1,0 +1,36 @@
+
+.header {
+    background-color: gold;
+    border-bottom: 1px solid black;;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+.addUser {
+    display: flex;
+    justify-content: center;
+}
+table {
+    display: flex;
+    justify-content: center;
+}
+tr {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.owing {
+    color: red;
+  }
+  
+  .positive {
+    color: green;
+  }
+
+.maior{
+    color: blue;
+}
+  

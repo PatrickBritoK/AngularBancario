@@ -1,0 +1,48 @@
+<header>
+  <mat-toolbar class="header">
+    <span>Gringotes</span>
+  </mat-toolbar>
+</header>
+<body>
+  
+
+<h2>Usuários</h2>
+
+<form class="addUser" (ngSubmit)="addUser()">
+  <input type="text" name="name" [(ngModel)]="newUser.name" placeholder="Name">
+  <input type="number" name="balance" [(ngModel)]="newUser.saldo" placeholder="Balance">
+  <button type="submit">Add User</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Saldo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users" [ngClass]="{'owing': user.saldo < 0, 'positive': user.saldo > 0, 'maior': user.saldo > 100000}">
+      <td>{{ user.name  }}</td>
+      <td>{{ user.saldo  | currency: "BRL " }}</td>
+      <td>
+        <button (click)="editUser(user)">Edit</button>
+        <button (click)="removeUser(user)">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="editMode">
+  <h3>Edit User</h3>
+  <form (ngSubmit)="updateUser()">
+    <input type="text" name="name" [(ngModel)]="selectedUser.name">
+    <input type="number" name="balance" [(ngModel)]="selectedUser.saldo">
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
+</body>
